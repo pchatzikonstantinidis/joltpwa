@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline - JoltPWA</title>
+  <meta name="description" content="You are offline. This is the offline page for JoltPWA.">
+  <link rel="icon" type="image/png" sizes="32x32" href="src/assets/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="src/assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+
+<body>
+  <main>
+    <h1>Offline</h1>
+    <p>You are currently offline. Please check your internet connection and try again.</p>
+    <img src="src/assets/icons/offline-image.png" alt="Offline illustration" class="offline-illustration">
+    <button onclick="location.reload()">Try Again</button>
+  </main>
+  <script>
+    window.addEventListener('online', () => {
+      location.reload();
+    });
+    console.log('🔧 JoltPWA | Attempting to reconnect');
+  </script>
+</body>
+
+</html>

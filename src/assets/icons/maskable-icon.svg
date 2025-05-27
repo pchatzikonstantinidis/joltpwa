@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 196">
+  <defs>
+    <linearGradient id="bgGradMask" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+  </defs>
+  <!-- Maskable icon needs to fill the entire area -->
+  <rect width="196" height="196" fill="url(#bgGradMask)"/>
+  <text x="98" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="100" text-anchor="middle" fill="#ffffff" font-weight="bold">⚡</text>
+</svg>

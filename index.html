@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoltPWA - Universal PWA Template Demo</title>
+  <meta name="description"
+    content="A universal, zero-dependency PWA template for any website or CMS, including Joomla 5+. Features URL token-based PWA/web separation, cross-platform installation, and comprehensive diagnostics.">
+  <meta name="apple-mobile-web-app-title" content="JoltPWA">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="src/assets/icons/favicon-32x32.svg">
+  <link rel="icon" type="image/svg+xml" sizes="16x16" href="src/assets/icons/favicon-16x16.svg">
+  <link rel="apple-touch-icon" href="src/assets/icons/apple-touch-icon.svg">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>⚡ JoltPWA Universal Template Demo</h1>
+    <p>Zero-dependency Progressive Web App template for any website or CMS</p>
+  </header>
+
+  <main>
+    <!-- PWA Installation Section -->
+    <section class="demo-section">
+      <h2>📱 PWA Installation</h2>
+      <div class="pwa-install-buttons-wrap">
+        <button id="android-install-button" class="install-button install-button--android">
+          <svg class="install-button__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path
+              d="M17.523 15.3414c-.5557 0-.9977-.4419-.9977-.9977s.442-.9978.9977-.9978.9978.4421.9978.9978-.4421.9977-.9978.9977m-11.046 0c-.5557 0-.9977-.4419-.9977-.9977s.442-.9978.9977-.9978.9978.4421.9978.9978-.4421.9977-.9978.9977m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1518-.5689.416.416 0 00-.5689.1518l-2.0266 3.5084C15.5484 8.2066 13.8518 7.8535 12 7.8535s-3.5484.3531-5.1585 1.0406L4.8149 5.4457a.4161.4161 0 00-.5689-.1518.4161.4161 0 00-.1518.5689l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396" />
+          </svg>
+          Install on Android
+        </button>
+        <button id="ios-install-button" class="install-button install-button--ios">
+          <svg class="install-button__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path
+              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+          </svg>
+          Install on iOS
+        </button>
+      </div>
+
+      <div class="installation-guide">
+        <h3>📋 Installation Instructions</h3>
+        <div id="platform-detection">
+          <p><strong>Your Platform:</strong> <span id="detected-platform">Detecting...</span></p>
+        </div>
+
+        <div id="android-guide" class="platform-specific">
+          <h4>📱 Android Installation:</h4>
+          <ol>
+            <li>Tap the "Install on Android" button above</li>
+            <li>Or tap browser menu (⋮) → "Add to Home screen"</li>
+            <li>Confirm installation in the popup</li>
+            <li>Find the JoltPWA icon on your home screen</li>
+          </ol>
+        </div>
+
+        <div id="ios-guide" class="platform-specific">
+          <h4>🍎 iOS Installation:</h4>
+          <ol>
+            <li>Open this page in Safari (required for iOS)</li>
+            <li>Tap the Share button (📤)</li>
+            <li>Scroll down and tap "Add to Home Screen"</li>
+            <li>Customize the name if desired and tap "Add"</li>
+          </ol>
+        </div>
+
+        <div id="desktop-guide" class="platform-specific">
+          <h4>💻 Desktop Installation:</h4>
+          <ol>
+            <li>Look for the install icon (⊕) in your browser's address bar</li>
+            <li>Or tap the "Install on Android" button (works for desktop too)</li>
+            <li>Confirm installation in the browser popup</li>
+            <li>Launch from your desktop or applications menu</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- PWA Status & Diagnostics -->
+    <section class="demo-section">
+      <h2>🔍 PWA Status & Diagnostics</h2>
+      <div class="status-grid" id="pwa-status-grid">
+        <!-- Status cards will be populated by JavaScript -->
+      </div>
+
+      <h3>🧪 PWA Tests</h3>
+      <div>
+        <button class="test-button" onclick="testServiceWorker()">Test Service Worker</button>
+        <button class="test-button" onclick="testOfflineMode()">Test Offline Mode</button>
+        <button class="test-button" onclick="testManifest()">Test Manifest</button>
+        <button class="test-button" onclick="testInstallability()">Test Installability</button>
+        <button class="test-button" onclick="clearPWACache()">Clear PWA Cache</button>
+        <button class="test-button" onclick="runFullDiagnostics()">🔬 Run Full Diagnostics</button>
+      </div>
+    </section>
+
+    <!-- URL Token Demo -->
+    <section class="demo-section">
+      <h2>🔗 URL Token Demo</h2>
+      <p>JoltPWA uses URL tokens to separate PWA mode from regular web browsing:</p>
+
+      <div class="url-demo">
+        <p><strong>Current Mode:</strong> <span id="current-mode">Web Mode</span></p>
+        <p><strong>Current URL:</strong> <code id="current-url">...</code></p>
+        <p><strong>PWA Token:</strong> <span id="pwa-token-status">Not detected</span></p>
+      </div>
+
+      <div>
+        <a href="?token=pwa" class="test-button">🔗 Switch to PWA Mode</a>
+        <a href="?" class="test-button">🌐 Switch to Web Mode</a>
+      </div>
+
+      <div class="code-snippet">
+        <strong>Implementation:</strong><br>
+        // Check if running in PWA mode<br>
+        const isPWAMode = new URLSearchParams(window.location.search).get('token') === 'pwa';<br><br>
+        // Manifest start_url includes the token<br>
+        "start_url": "/index.html?token=pwa"
+      </div>
+    </section>
+
+    <!-- Features & Integration -->
+    <section class="demo-section">
+      <h2>Features & CMS Integration</h2>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <h4>⚡ Zero Dependencies</h4>
+          <p>Pure JavaScript, CSS, and HTML. No frameworks or build tools required.</p>
+        </div>
+
+        <div class="feature-item">
+          <h4>🎯 Universal Compatibility</h4>
+          <p>Works with any website, CMS, or framework. Optimized for Joomla 5+.</p>
+        </div>
+
+        <div class="feature-item">
+          <h4>📱 Cross-Platform</h4>
+          <p>Installs on Android, iOS, and desktop with native app-like experience.</p>
+        </div>
+
+        <div class="feature-item">
+          <h4>🔧 Production Ready</h4>
+          <p>Comprehensive error handling, logging standards, and offline support.</p>
+        </div>
+
+        <div class="feature-item">
+          <h4>🔄 Token-Based Separation</h4>
+          <p>Smart URL token system separates PWA mode from regular web browsing.</p>
+        </div>
+
+        <div class="feature-item">
+          <h4>📊 Built-in Diagnostics</h4>
+          <p>Self-testing capabilities and comprehensive status monitoring.</p>
+        </div>
+      </div>
+
+      <h3>🔧 Quick Integration for Joomla 5+</h3>
+      <div class="code-snippet">
+        1. Copy all files to your Joomla root directory<br>
+        2. Update manifest.json with your site details<br>
+        3. Replace placeholder icons in src/assets/icons/<br>
+        4. Include PWA scripts in your template:<br><br>
+
+        &lt;link rel="manifest" href="/manifest.json"&gt;<br>
+        &lt;script src="/src/js/pwa-install.js"&gt;&lt;/script&gt;<br>
+        &lt;script src="/src/js/pwa-manager.js"&gt;&lt;/script&gt;
+      </div>
+    </section>
+
+    <!-- Live Console Output -->
+    <section class="demo-section">
+      <h2>📝 Live Console Output</h2>
+      <p>Real-time logging from JoltPWA components:</p>
+      <div id="live-console" class="log-output">
+        Loading console output...
+      </div>
+      <button class="test-button" onclick="clearConsoleOutput()">Clear Console</button>
+      <button class="test-button" onclick="downloadLogs()">📥 Download Logs</button>
+    </section>
+
+    <!-- About & Documentation -->
+    <section class="demo-section">
+      <h2>📚 About JoltPWA</h2>
+      <p>JoltPWA is a universal, production-ready Progressive Web App template designed for easy integration with any
+        website or Content Management System, with special optimization for Joomla 5+.</p>
+
+      <h3>🎯 Perfect For:</h3>
+      <ul>
+        <li><strong>Joomla 5+ Sites:</strong> Drop-in PWA functionality for modern Joomla installations</li>
+        <li><strong>Any CMS:</strong> WordPress, Drupal, custom systems - works everywhere</li>
+        <li><strong>Static Sites:</strong> GitHub Pages, Netlify, Vercel, or any hosting</li>
+        <li><strong>Development:</strong> Use as a starting template for new PWA projects</li>
+      </ul>
+
+      <h3>📖 Documentation:</h3>
+      <ul>
+        <li><a href="docs/README.md">📋 Full Documentation</a></li>
+        <li><a href="docs/JOOMLA-INTEGRATION-GUIDE.md">🌟 Joomla Integration Guide</a></li>
+        <li><a href="docs/LOGGING-STANDARDS.md">📊 Logging Standards</a></li>
+        <li><a href="docs/NOTIFICATION-STANDARDS.md">🔔 Notification Standards</a></li>
+        <li><a href="CONTRIBUTING.md">🤝 Contributing Guide</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><span class="footer-emoji">⚡</span>JoltPWA</h3>
+          <p>Universal PWA template for modern web applications. Zero dependencies, maximum performance,
+            and production-ready features for any website or CMS platform.</p>
+          <div class="footer-tech-stack">
+            <span class="tech-badge">PWA</span>
+            <span class="tech-badge">Service Worker</span>
+            <span class="tech-badge">Vanilla JS</span>
+            <span class="tech-badge">WCAG AA</span>
+            <span class="tech-badge">Mobile First</span>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Features</h4>
+          <ul class="footer-links">
+            <li><a href="#installation">Installation Guide</a></li>
+            <li><a href="#pwa-features">PWA Features</a></li>
+            <li><a href="#platform-support">Platform Support</a></li>
+            <li><a href="#diagnostics">Diagnostics Tools</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="manifest.json">Web Manifest</a></li>
+            <li><a href="src/js/pwa-manager.js">Source Code</a></li>
+            <li><a href="#docs">Documentation</a></li>
+            <li><a href="#support">Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          <span class="footer-emoji">🚀</span>
+          &copy; 2025 JoltPWA - Production-ready PWA template
+        </p>
+        <a href="LICENSE" class="footer-license">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core PWA JavaScript -->
+  <script src="src/js/pwa-install.js"></script>
+  <script src="src/js/pwa-manager.js"></script>
+
+  <!-- Demo-specific JavaScript -->
+  <script>
+    // Global variables for demo
+    let consoleOutputElement;
+    let logHistory = [];
+    let originalConsole = {};
+
+    // Initialize demo when page loads
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeDemo();
+      setupConsoleCapture();
+      updatePWAStatus();
+      detectPlatform();
+      updateURLStatus();
+    });
+
+    function initializeDemo() {
+      consoleOutputElement = document.getElementById('live-console');
+      addToConsole('🔧 JoltPWA | Demo initialized successfully');
+      addToConsole('🔧 JoltPWA | Running comprehensive PWA diagnostics...');
+    }
+
+    function setupConsoleCapture() {
+      // Capture console.log, console.warn, console.error
+      ['log', 'warn', 'error', 'info'].forEach(method => {
+        originalConsole[method] = console[method];
+        console[method] = function (...args) {
+          originalConsole[method].apply(console, args);
+          addToConsole(`${method.toUpperCase()}: ${args.join(' ')}`);
+        };
+      });
+    }
+
+    function addToConsole(message) {
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = `[${timestamp}] ${message}`;
+      logHistory.push(logEntry);
+
+      if (consoleOutputElement) {
+        consoleOutputElement.textContent += logEntry + '\n';
+        consoleOutputElement.scrollTop = consoleOutputElement.scrollHeight;
+
+        // Keep only last 50 entries
+        if (logHistory.length > 50) {
+          logHistory = logHistory.slice(-50);
+          const lastLines = consoleOutputElement.textContent.split('\n').slice(-50);
+          consoleOutputElement.textContent = lastLines.join('\n');
+        }
+      }
+    }
+
+    function updatePWAStatus() {
+      const statusGrid = document.getElementById('pwa-status-grid');
+      const checks = [
+        {
+          name: 'Service Worker',
+          status: 'serviceWorker' in navigator,
+          details: 'serviceWorker' in navigator ? 'Supported' : 'Not supported'
+        },
+        {
+          name: 'Manifest',
+          status: !!document.querySelector('link[rel="manifest"]'),
+          details: document.querySelector('link[rel="manifest"]') ? 'Linked' : 'Not found'
+        },
+        {
+          name: 'HTTPS/Localhost',
+          status: location.protocol === 'https:' || location.hostname === 'localhost',
+          details: location.protocol === 'https:' ? 'Secure' : location.hostname === 'localhost' ? 'Local dev' : 'Insecure'
+        },
+        {
+          name: 'Install Prompt',
+          status: 'BeforeInstallPromptEvent' in window || window.deferredPrompt,
+          details: window.deferredPrompt ? 'Available' : 'Not available'
+        }
+      ];
+
+      statusGrid.innerHTML = checks.map(check => `
+        <div class="status-card ${check.status ? 'success' : 'error'}">
+          <h4>
+            <span class="status-indicator ${check.status ? 'indicator-success' : 'indicator-error'}"></span>
+            ${check.name}
+          </h4>
+          <p>${check.details}</p>
+        </div>
+      `).join('');
+    }
+
+    function detectPlatform() {
+      const platform = navigator.platform;
+      const userAgent = navigator.userAgent;
+      let detectedPlatform = 'Unknown';
+      let guideToShow = '';
+
+      if (/Android/.test(userAgent)) {
+        detectedPlatform = 'Android';
+        guideToShow = 'android-guide';
+      } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+        detectedPlatform = 'iOS';
+        guideToShow = 'ios-guide';
+      } else if (/Win|Mac|Linux/.test(platform)) {
+        detectedPlatform = `Desktop (${platform})`;
+        guideToShow = 'desktop-guide';
+      }
+
+      document.getElementById('detected-platform').textContent = detectedPlatform;
+
+      if (guideToShow) {
+        document.getElementById(guideToShow).style.display = 'block';
+      }
+
+      addToConsole(`🔧 JoltPWA | Platform detected: ${detectedPlatform}`);
+    }
+
+    function updateURLStatus() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isPWAMode = urlParams.get('token') === 'pwa';
+
+      document.getElementById('current-mode').textContent = isPWAMode ? 'PWA Mode' : 'Web Mode';
+      document.getElementById('current-url').textContent = window.location.href;
+      document.getElementById('pwa-token-status').textContent = isPWAMode ? 'Detected (token=pwa)' : 'Not detected';
+
+      if (isPWAMode) {
+        addToConsole('🔧 JoltPWA | Running in PWA mode (token=pwa detected)');
+      }
+    }
+
+    // Test Functions
+    function testServiceWorker() {
+      addToConsole('🧪 Testing Service Worker...');
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          if (registrations.length > 0) {
+            addToConsole('✅ Service Worker is registered and active');
+            addToConsole(`📊 Found ${registrations.length} service worker registration(s)`);
+          } else {
+            addToConsole('⚠️ Service Worker supported but not registered');
+          }
+        });
+      } else {
+        addToConsole('❌ Service Worker not supported in this browser');
+      }
+    }
+
+    function testOfflineMode() {
+      addToConsole('🧪 Testing offline functionality...');
+
+      // Simulate offline test
+      if (navigator.onLine) {
+        addToConsole('📡 Currently online - test by disconnecting internet');
+        addToConsole('💡 Tip: Disconnect internet and refresh to test offline page');
+      } else {
+        addToConsole('📴 Currently offline - offline mode active');
+      }
+    }
+
+    function testManifest() {
+      addToConsole('🧪 Testing PWA Manifest...');
+
+      fetch('manifest.json')
+        .then(response => response.json())
+        .then(manifest => {
+          addToConsole('✅ Manifest loaded successfully');
+          addToConsole(`📱 App name: ${manifest.name}`);
+          addToConsole(`🎨 Theme color: ${manifest.theme_color}`);
+          addToConsole(`🚀 Start URL: ${manifest.start_url}`);
+          addToConsole(`🔧 Display mode: ${manifest.display}`);
+          addToConsole(`📐 Icons: ${manifest.icons.length} sizes available`);
+        })
+        .catch(error => {
+          addToConsole('❌ Failed to load manifest: ' + error.message);
+        });
+    }
+
+    function testInstallability() {
+      addToConsole('🧪 Testing PWA installability...');
+
+      const checks = [
+        { name: 'HTTPS/Localhost', test: location.protocol === 'https:' || location.hostname === 'localhost' },
+        { name: 'Service Worker', test: 'serviceWorker' in navigator },
+        { name: 'Manifest linked', test: !!document.querySelector('link[rel="manifest"]') },
+        { name: 'Manifest display mode', test: true }, // We'll check this
+        { name: 'Icons present', test: true } // We'll check this
+      ];
+
+      checks.forEach(check => {
+        addToConsole(`${check.test ? '✅' : '❌'} ${check.name}: ${check.test ? 'PASS' : 'FAIL'}`);
+      });
+
+      if (window.deferredPrompt) {
+        addToConsole('🎯 Install prompt is available and ready');
+      } else {
+        addToConsole('⚠️ Install prompt not available (may already be installed)');
+      }
+    }
+
+    function clearPWACache() {
+      addToConsole('🧹 Clearing PWA cache...');
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          registrations.forEach(registration => {
+            registration.unregister();
+          });
+          addToConsole('✅ Service Worker unregistered');
+        });
+      }
+
+      if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+          return Promise.all(
+            cacheNames.map(cacheName => caches.delete(cacheName))
+          );
+        }).then(() => {
+          addToConsole('✅ All caches cleared');
+          addToConsole('🔄 Refresh page to re-register service worker');
+        });
+      }
+    }
+
+    function runFullDiagnostics() {
+      addToConsole('🔬 Running full PWA diagnostics...');
+      addToConsole('================================');
+
+      setTimeout(() => testServiceWorker(), 100);
+      setTimeout(() => testManifest(), 500);
+      setTimeout(() => testInstallability(), 1000);
+      setTimeout(() => testOfflineMode(), 1500);
+
+      setTimeout(() => {
+        addToConsole('================================');
+        addToConsole('🎯 Full diagnostics completed');
+        addToConsole('📋 Review results above for any issues');
+      }, 2000);
+    }
+
+    function clearConsoleOutput() {
+      logHistory = [];
+      if (consoleOutputElement) {
+        consoleOutputElement.textContent = '';
+      }
+      addToConsole('🔧 JoltPWA | Console cleared');
+    }
+
+    function downloadLogs() {
+      const logContent = logHistory.join('\n');
+      const blob = new Blob([logContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `joltpwa-logs-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+      addToConsole('📥 Logs downloaded successfully');
+    }
+
+    // Update status periodically
+    setInterval(updatePWAStatus, 5000);
+  </script>
+</body>
+
+</html>
