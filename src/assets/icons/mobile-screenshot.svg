@@ -2,67 +2,37 @@
   xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="mobilebg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#366809;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#528423;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
     </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-
   <!-- Background -->
   <rect width="100%" height="100%" fill="url(#mobilebg)" />
-
-  <!-- Status bar -->
-  <rect x="0" y="0" width="320" height="44" fill="rgba(0,0,0,0.1)" />
-  <text x="160" y="28" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">
-    9:41 ●●●●● 100%
-  </text>
-
-  <!-- Header -->
-  <rect x="0" y="44" width="320" height="60" fill="rgba(255,255,255,0.1)" />
-  <text x="160" y="85" fill="#fee98e" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">
-    📦 ΚΟΜΒΟΣ
-  </text>
-
-  <!-- Main Content -->
-  <rect x="20" y="124" width="280" height="380" fill="rgba(255,255,255,0.05)" rx="15" />
-
-  <!-- Welcome -->
-  <text x="160" y="160" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">
-    Καλώς ήρθατε
-  </text>
-
-  <text x="160" y="185" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    Χονδρική πώληση τροφίμων
-  </text>
-  <text x="160" y="200" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    &amp; ειδών εστίασης
-  </text>
-
-  <!-- Features -->
-  <g transform="translate(40, 230)">
-    <!-- Feature 1 -->
-    <rect x="0" y="0" width="240" height="50" fill="rgba(255,255,255,0.1)" rx="10" />
-    <text x="25" y="32" fill="#fee98e" font-family="Arial, sans-serif" font-size="20">🚀</text>
-    <text x="60" y="32" fill="white" font-family="Arial, sans-serif" font-size="14">Γρήγορες παραγγελίες</text>
-
-    <!-- Feature 2 -->
-    <rect x="0" y="60" width="240" height="50" fill="rgba(255,255,255,0.1)" rx="10" />
-    <text x="25" y="92" fill="#fee98e" font-family="Arial, sans-serif" font-size="20">📱</text>
-    <text x="60" y="92" fill="white" font-family="Arial, sans-serif" font-size="14">Offline λειτουργία</text>
-
-    <!-- Feature 3 -->
-    <rect x="0" y="120" width="240" height="50" fill="rgba(255,255,255,0.1)" rx="10" />
-    <text x="25" y="152" fill="#fee98e" font-family="Arial, sans-serif" font-size="20">🔔</text>
-    <text x="60" y="152" fill="white" font-family="Arial, sans-serif" font-size="14">Ειδοποιήσεις</text>
-
-    <!-- Feature 4 -->
-    <rect x="0" y="180" width="240" height="50" fill="rgba(255,255,255,0.1)" rx="10" />
-    <text x="25" y="212" fill="#fee98e" font-family="Arial, sans-serif" font-size="20">💼</text>
-    <text x="60" y="212" fill="white" font-family="Arial, sans-serif" font-size="14">Επαγγελματικές λύσεις</text>
-  </g>
-
-  <!-- Install button -->
-  <rect x="40" y="520" width="240" height="40" fill="#fee98e" rx="20" />
-  <text x="160" y="545" fill="#366809" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">
-    📲 Εγκατάσταση
-  </text>
+  <!-- App Title Bar -->
+  <rect x="0" y="0" width="320" height="56" fill="#1e293b" />
+  <text x="24" y="36" fill="#00ff88" font-family="Fira Code, monospace" font-size="18" font-weight="bold">⚡ JoltPWA</text>
+  <!-- Main Content Area -->
+  <rect x="16" y="72" width="288" height="340" rx="18" fill="#181f2a" stroke="#00ff88" stroke-width="1.5" filter="url(#glow)" />
+  <!-- Console Logger -->
+  <rect x="32" y="100" width="256" height="80" rx="8" fill="#0f172a" stroke="#00ff88" stroke-width="1.5" filter="url(#glow)" />
+  <text x="44" y="120" fill="#00ff88" font-family="Fira Code, monospace" font-size="11">⚡ CONSOLE OUTPUT</text>
+  <text x="44" y="140" fill="#00ff88" font-family="Fira Code, monospace" font-size="9">Service Worker registered</text>
+  <text x="44" y="155" fill="#00ff88" font-family="Fira Code, monospace" font-size="9">PWA ready for offline use</text>
+  <!-- iOS Modal Popup (stylized) -->
+  <rect x="60" y="200" width="200" height="120" rx="12" fill="#fff" fill-opacity="0.97" stroke="#00ff88" stroke-width="1.5" />
+  <text x="160" y="220" fill="#0f172a" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Add to iPhone</text>
+  <text x="160" y="240" fill="#0f172a" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">1. Tap Share</text>
+  <text x="160" y="255" fill="#0f172a" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">2. Add to Home Screen</text>
+  <text x="160" y="270" fill="#0f172a" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">3. Tap Add</text>
+  <rect x="110" y="285" width="100" height="22" rx="6" fill="#00ff88" />
+  <text x="160" y="300" fill="#0f172a" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Perfect! 👍</text>
+  <!-- Footer -->
+  <text x="160" y="550" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Minimal, modern, installable PWA for everyone</text>
 </svg>
