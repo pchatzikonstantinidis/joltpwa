@@ -2,7 +2,7 @@
 
 > **What does "Jolt" mean?**
 >
-> **Jolt** means a sudden burst of energy or a spark. JoltPWA instantly gives your website a "jolt" of modern app-like power—making it faster, installable, and offline-ready. The name is short, memorable, and suggests a quick boost for any site.
+> **Jolt** means a sudden burst of energy or a spark. JoltPWA instantly gives your website a "jolt" of modern app-like power-making it faster, installable, and offline-ready. The name is short, memorable, and suggests a quick boost for any site.
 
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-brightgreen.svg)](https://developers.google.com/web/progressive-web-apps/)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero-success.svg)](package.json)
